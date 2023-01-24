@@ -4,7 +4,7 @@ from parse_one import bs4_get_search_results
 from write_to_json import write_to_json
 import csv
 
-
+# This handles the CSV file (keywords.csv) and makes it JSON
 keywords = []
 with open('keywords.csv', mode='r') as csv_file:
     csv_reader = csv.DictReader(csv_file)
@@ -12,10 +12,10 @@ with open('keywords.csv', mode='r') as csv_file:
         for key, value in row.items():
             keywords.append(value)
 
-
+# Keywords run through parse_one.py, where the Pages HTML is fetched and parsed, and outputs the data all at once to data.json (should be optimized later?)
 z = []
 
-for tag in keywords[:4]:
+for tag in keywords[:20]:
     result = bs4_get_search_results(tag)
     print(tag)
     z.append({tag: result})

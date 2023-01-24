@@ -14,6 +14,8 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
 }
 
+# Query's URL is defined
+
 
 def bs4_get_search_results(query):
     params = {
@@ -28,7 +30,7 @@ def bs4_get_search_results(query):
 
     data = []
 
-    # DESKTOP RESULTS
+    # DESKTOP CSS class selectors (Will need to updated as Google switches css classes)
     for result in soup.select('.tF2Cxc'):
         title = result.select_one('.DKV0Md').text
         link = result.select_one('.yuRUbf a')['href']
