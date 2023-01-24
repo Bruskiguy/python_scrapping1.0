@@ -18,6 +18,7 @@ for tag in keywords[:20]:
     result = bs4_get_search_results(tag)
     print(tag)
     z.append({tag: result})
+# the ultimate secret to not being caught by google.
     time.sleep(randrange(3, 7))
 
 print(z)
