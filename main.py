@@ -4,7 +4,6 @@ from parse_one import bs4_get_search_results
 from write_to_json import write_to_json
 import csv
 
-# This handles the CSV file (keywords.csv) and makes it JSON
 keywords = []
 with open('keywords.csv', mode='r') as csv_file:
     csv_reader = csv.DictReader(csv_file)
