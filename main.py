@@ -14,12 +14,12 @@ with open('keywords.csv', mode='r') as csv_file:
 # Keywords run through parse_one.py, where the Pages HTML is fetched and parsed, and outputs the data all at once to data.json (should be optimized later?)
 z = []
 
-for tag in keywords[:20]:
+for tag in keywords[:5]:
     result = bs4_get_search_results(tag)
     print(tag)
     z.append({tag: result})
 # the ultimate secret to not being caught by google.
     time.sleep(randrange(3, 7))
+    write_to_json(z)
 
 print(z)
-write_to_json(z)
