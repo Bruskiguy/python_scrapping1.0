@@ -12,15 +12,18 @@ with open('keywords.csv', mode='r') as csv_file:
         for key, value in row.items():
             keywords.append(value)
 
-# Keywords run through parse_one.py, where the Pages HTML is fetched and parsed, and outputs the data all at once to data.json (should be optimized later?)
-z = []
+file_path = "data.json"
 
-for tag in keywords[:5]:
+# Keywords run through parse_one.py, where the Pages HTML is fetched and parsed, and outputs the data all at once to data.json (should be optimized later?)
+for i in range(len(keywords)):
+    tag = keywords[i]
+
+    # every 100'th keyword we create a new file eg. `data100.json`
+    if i and i % 100 == 0:
+        file_path = f"data{i}.json"
+
     result = bs4_get_search_results(tag)
     print(tag)
-    z.append({tag: result})
-# the ultimate secret to not being caught by google.
+    write_to_json({tag: result}, file_path)
+    # the ultimate secret to not being caught by google.
     time.sleep(randrange(3, 7))
-    write_to_json(z)
-
-print(z)
